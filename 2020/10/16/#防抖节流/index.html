@@ -8,11 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="#防抖节流1、防抖通过setTimeout的方式，在一定时间间隔内，将多次触发的事件一次触发。 12345678910111213141516171819202122btn.addEventListener(&amp;#x27;click&amp;#x27;,debounce(submit,2000),false);function submit(e)&amp;#123;​      &#x2F;&#x2F; console.log(thi">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2020/10/16/#%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#防抖节流1、防抖通过setTimeout的方式，在一定时间间隔内，将多次触发的事件一次触发。 12345678910111213141516171819202122btn.addEventListener(&amp;#x27;click&amp;#x27;,debounce(submit,2000),false);function submit(e)&amp;#123;​      &#x2F;&#x2F; console.log(thi">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-16T12:25:53.706Z">
+<meta property="article:modified_time" content="2020-10-07T12:15:14.672Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -156,74 +160,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数组去重" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><h4 id="1-利用set"><a href="#1-利用set" class="headerlink" title="1:利用set"></a>1:利用set</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">&#x27;1&#x27;</span>, <span class="number">17</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="string">&#x27;true&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, &#123;&#125;, &#123;&#125;];</span><br><span class="line">​   <span class="keyword">const</span> res1 = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));</span><br><span class="line">​   <span class="built_in">console</span>.log(res1);</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-两层for循环加上splice"><a href="#2-两层for循环加上splice" class="headerlink" title="2:两层for循环加上splice"></a>2:两层for循环加上splice</h4><p>​    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res2 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">​      <span class="keyword">let</span> len = arr.length;</span><br><span class="line">​      <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i &lt; len;i++)&#123;</span><br><span class="line">​        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>;j &lt; len;j++)&#123;</span><br><span class="line">​          <span class="keyword">if</span>(arr[i] === arr[j])&#123;</span><br><span class="line">​            arr.splice(j,<span class="number">1</span>);</span><br><span class="line">​            len--;</span><br><span class="line">​            j--;</span><br><span class="line">​          &#125;</span><br><span class="line">​        &#125;</span><br><span class="line">​      &#125;</span><br><span class="line">​      <span class="keyword">return</span> arr;</span><br><span class="line">​    &#125;</span><br><span class="line">​    <span class="built_in">console</span>.log(res2(arr));</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-利用indexof"><a href="#3-利用indexof" class="headerlink" title="3:利用indexof"></a>3:利用indexof</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> res3 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">​      <span class="keyword">const</span> res = [];</span><br><span class="line">​      <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; arr.length;i++)&#123;</span><br><span class="line">​        <span class="keyword">if</span>(res.indexOf(arr[i]) === <span class="number">-1</span>)res.push(arr[i]);</span><br><span class="line">​      &#125;</span><br><span class="line">​      <span class="keyword">return</span> res;</span><br><span class="line">​    &#125;</span><br><span class="line">​    <span class="built_in">console</span>.log(res3(arr));</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-利用includes"><a href="#4-利用includes" class="headerlink" title="4:利用includes"></a>4:利用includes</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> res4 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">​      <span class="keyword">const</span> res = [];</span><br><span class="line">​      <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i &lt; arr.length;i++)&#123;</span><br><span class="line">​        <span class="keyword">if</span>(!res.includes(arr[i]))res.push(arr[i])</span><br><span class="line">​      &#125;<span class="keyword">return</span> res;</span><br><span class="line">​    &#125;</span><br><span class="line">​    <span class="built_in">console</span>.log(res4(arr));</span><br></pre></td></tr></table></figure>
-
-<h4 id="5：利用filter"><a href="#5：利用filter" class="headerlink" title="5：利用filter"></a>5：利用filter</h4><p>​    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res5 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">​      <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item,index</span>) =&gt;</span> &#123;</span><br><span class="line">​        <span class="keyword">return</span> arr.indexOf(item) === index;</span><br><span class="line">​      &#125;)</span><br><span class="line">​    &#125;</span><br><span class="line">​    <span class="built_in">console</span>.log(res5(arr));</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-利用Map"><a href="#6-利用Map" class="headerlink" title="6:利用Map"></a>6:利用Map</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> res6 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">​      <span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">​      <span class="keyword">const</span> res = [];</span><br><span class="line">​      <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; arr.length;i++)&#123;</span><br><span class="line">​        <span class="keyword">if</span>(!map.has(arr[i]))&#123;</span><br><span class="line">​          map.set(arr[i],<span class="literal">true</span>)</span><br><span class="line">​          res.push(arr[i]);</span><br><span class="line">​        &#125;</span><br><span class="line">​      &#125;</span><br><span class="line">​      <span class="keyword">return</span> res;</span><br><span class="line">​    &#125;</span><br><span class="line">​    <span class="built_in">console</span>.log(res6(arr));</span><br></pre></td></tr></table></figure>
-
-<h2 id="数组扁平化"><a href="#数组扁平化" class="headerlink" title="数组扁平化"></a>数组扁平化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组扁平化</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,[<span class="number">2</span>,[<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>]]],<span class="number">6</span>];</span><br><span class="line"><span class="comment">//1：使用flat</span></span><br><span class="line"><span class="keyword">const</span> arrflat = arr.flat(<span class="literal">Infinity</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arrflat);</span><br><span class="line"><span class="comment">//2:使用正则</span></span><br><span class="line"><span class="keyword">const</span> res2 = <span class="built_in">JSON</span>.stringify(arr).replace(<span class="regexp">/\[|\]/g</span>,<span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res2);<span class="comment">//数据会变成字符串</span></span><br><span class="line"><span class="comment">//3:正则改良版本</span></span><br><span class="line"><span class="keyword">const</span> res3 = <span class="built_in">JSON</span>.parse(<span class="string">&#x27;[&#x27;</span>+ <span class="built_in">JSON</span>.stringify(arr).replace(<span class="regexp">/\[|\]/g</span>,<span class="string">&#x27;&#x27;</span>)+<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res3);</span><br><span class="line"><span class="comment">//4:使用reduce</span></span><br><span class="line"><span class="keyword">const</span> flatten = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">pre,cur</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(pre);</span><br><span class="line">        <span class="keyword">return</span> pre.concat(<span class="built_in">Array</span>.isArray(cur) ? flatten(cur) : cur);</span><br><span class="line">    &#125;,[])</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> res4 =  flatten(arr);</span><br><span class="line"><span class="built_in">console</span>.log(res4);</span><br><span class="line"><span class="comment">//函数递归</span></span><br><span class="line"><span class="keyword">const</span> res5 = [];</span><br><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr[i]))&#123;</span><br><span class="line">            fn(arr[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            res5.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res5;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn(arr));</span><br></pre></td></tr></table></figure>
-
-<h2 id="js数组的高级用法"><a href="#js数组的高级用法" class="headerlink" title="js数组的高级用法"></a>js数组的高级用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//map的高级用法</span></span><br><span class="line">        <span class="comment">// 参数：接收两个参数，一个是回调函数，另一个是回调函数的this值（可选）。回调函数接收三个参数，分别是当前值，当前索引和整个数组。</span></span><br><span class="line">        <span class="comment">// 返回：函数返回一个新创建的数组，数组中的每个元素都经过了回调函数的处理，结果不改变原数组。</span></span><br><span class="line">        <span class="keyword">let</span> nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">let</span> obj = &#123;<span class="attr">val</span>: <span class="number">5</span>&#125;;</span><br><span class="line">        <span class="keyword">let</span> newNums = nums.map(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> item + index + array[index] + <span class="built_in">this</span>.val;</span><br><span class="line">            <span class="comment">// return item + index + array[index];</span></span><br><span class="line">        &#125;,obj);</span><br><span class="line">        <span class="built_in">console</span>.log(newNums);</span><br><span class="line">        <span class="comment">//reduce的高级用法</span></span><br><span class="line">        <span class="comment">// 参数：接收两个参数，一个是回调函数，另一个是初始值（可选）。回调函数接收三个参数，分别是积累值、当前值和整个数组。</span></span><br><span class="line">        <span class="comment">// 返回：函数返回一个值，该值由数组中的元素通过回调函数进行处理后积累得到的最终值。</span></span><br><span class="line">        <span class="comment">// 注：若没传初始值，则会将数组中的第一个元素作为积累值，从数组的第二个元素开始进行函数调用</span></span><br><span class="line">        <span class="keyword">let</span> nums1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">let</span> newNums1 = nums1.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">preSum,curVal,array</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> preSum + curVal;</span><br><span class="line">        &#125;,<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(newNums1);</span><br><span class="line">        <span class="comment">//filter的高级用法</span></span><br><span class="line">        <span class="comment">// 参数：接收一个函数参数。函数接收一个默认参数，就是数组正在遍历的当前元素，函数参数的返回值是一个布尔值，若返回true，则数组元素得到保留。</span></span><br><span class="line">        <span class="comment">// 返回：函数返回一个新创建的数组，数组元素为通过函数参数调用返回true的元素，此函数不会改变原数组。</span></span><br><span class="line">        <span class="keyword">let</span> oldnums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">let</span> newnums = oldnums.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">            <span class="comment">// console.log(val%2)</span></span><br><span class="line">            <span class="keyword">return</span> val % <span class="number">2</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">console</span>.log(newnums);</span><br><span class="line">        <span class="comment">//sort的高级用法</span></span><br><span class="line">        <span class="comment">// 参数：接收一个用于比较的函数，比较函数默认接收两个参数，分别是代表比较的两个元素。</span></span><br><span class="line">        <span class="comment">// 返回：返回一个经过比较函数调用的数组，此函数会改变原数组。</span></span><br><span class="line">        <span class="comment">//注：若没有传入比较函数，则会将数字转换成字符串，然后根据字符的unicode值进行升序排序，也就是根据字符串的比较规则进行升序排序</span></span><br><span class="line">        <span class="keyword">let</span> nums2 = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//两个比较的元素分别为a, b</span></span><br><span class="line">        nums2.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(a &gt; b) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(a &lt; b) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(a == b) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">console</span>.log(nums2.reverse())</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/16/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-#防抖节流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-#防抖节流" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -242,6 +179,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -249,16 +207,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/16/#%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/16/#%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/10/16/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -278,83 +304,14 @@
 
 
 
-
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/15/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2020/10/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-15T12:02:48.592Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/15/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -377,8 +334,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
