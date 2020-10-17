@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="vue数据双向绑定原理vue2.0实现123456789101112131415161718192021222324252627282930姓名：&lt;span id&#x3D;&quot;spanName&quot;&gt;&lt;&#x2F;span&gt;   &lt;br&gt;   &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;inpName&quot;&gt;   &amp;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2020/10/17/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue数据双向绑定原理vue2.0实现123456789101112131415161718192021222324252627282930姓名：&lt;span id&#x3D;&quot;spanName&quot;&gt;&lt;&#x2F;span&gt;   &lt;br&gt;   &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;inpName&quot;&gt;   &amp;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-17T03:04:39.146Z">
+<meta property="article:modified_time" content="2020-10-17T08:12:01.403Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -156,112 +160,152 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue双向数据绑定原理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="vue数据双向绑定原理"><a href="#vue数据双向绑定原理" class="headerlink" title="vue数据双向绑定原理"></a>vue数据双向绑定原理</h2><h3 id="vue2-0实现"><a href="#vue2-0实现" class="headerlink" title="vue2.0实现"></a>vue2.0实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">姓名：&lt;span id=<span class="string">&quot;spanName&quot;</span>&gt;&lt;/span&gt;</span><br><span class="line">   &lt;br&gt;</span><br><span class="line">   &lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;inpName&quot;</span>&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       <span class="keyword">let</span> obj = &#123;</span><br><span class="line">           name: <span class="string">&#x27;&#x27;</span></span><br><span class="line">       &#125;;</span><br><span class="line">       <span class="keyword">let</span> newObj = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj));</span><br><span class="line">       <span class="built_in">Object</span>.defineProperty(obj,<span class="string">&#x27;name&#x27;</span>,&#123;</span><br><span class="line">           get()&#123;</span><br><span class="line">               <span class="keyword">return</span> newObj.name;</span><br><span class="line">           &#125;,</span><br><span class="line">           set(val)&#123;</span><br><span class="line">               <span class="keyword">if</span>(val === newObj.name) <span class="keyword">return</span>;</span><br><span class="line">               newObj.name = val;</span><br><span class="line">               observer();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">observer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           spanName.innerHTML = obj.name;</span><br><span class="line">           inpName.value = obj.name;</span><br><span class="line">       &#125;;</span><br><span class="line">       observer();</span><br><span class="line">       <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">           obj.name = <span class="string">&#x27;Cabbage&#x27;</span>;</span><br><span class="line">       &#125;,<span class="number">1000</span>);</span><br><span class="line">       inpName.oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           obj.name = <span class="built_in">this</span>.value;</span><br><span class="line">       &#125;</span><br><span class="line">   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>首先定义了一个对象<code>obj</code>，里面包含了一个属性name，初始值为空。再拷贝一份<code>obj</code>对象给<code>newObject</code>，利用<code>Object.defineProperty</code>的截获原理，捕获obj的name属性，因为<code>newObject</code>和<code>obj</code>是一样的，在get中直接获取<code>newObject</code>的name属性值，set中也是将值赋值给<code>newObject</code>的name属性，当set的时候，调用观察者<code>observer</code>这个方法，将<code>obj</code>的name赋值给<code>spanName</code>和<code>inpName</code>；但是此时只是数据的单项绑定，当我们在输入框中输入数据的时候，将<code>obj</code>的name属性的值改变w为我们输入的这个值，这个时候就实现了数据的双向绑定。</p>
+<p>上面这个是我们针对对象的单个属性进行截获，那么，如果我们有多个属性，又应该如何去做呢？</p>
+<p>接下来我们看一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">姓名：&lt;span id=<span class="string">&quot;spanName&quot;</span>&gt;&lt;/span&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;inpName&quot;</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">let</span> obj = &#123;</span><br><span class="line">         name:<span class="string">&#x27;cabbage&#x27;</span>,</span><br><span class="line">         age:<span class="number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> active = [];</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            <span class="keyword">let</span> item = obj[key];</span><br><span class="line">            <span class="keyword">let</span> dep = [];</span><br><span class="line">            <span class="built_in">Object</span>.defineProperty(obj,key,&#123;</span><br><span class="line">                get()&#123;</span><br><span class="line">                    <span class="keyword">if</span>(active)&#123;</span><br><span class="line">                        dep.push(active);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    <span class="keyword">return</span> item;</span><br><span class="line">                &#125;,</span><br><span class="line">                set(newValue)&#123;</span><br><span class="line">                    item = newValue;</span><br><span class="line">                    dep.forEach(<span class="function"><span class="params">watcher</span> =&gt;</span> watcher());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">	defineReactive(obj);</span><br><span class="line">    <span class="keyword">const</span> watcher = (fn)&#123;</span><br><span class="line">        active = fn;</span><br><span class="line">        fn();</span><br><span class="line">        active = <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    watcher(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(obj.name);</span><br><span class="line">    &#125;);</span><br><span class="line">	inpName.oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        obj.name = <span class="built_in">this</span>.value;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="vue3-0实现"><a href="#vue3-0实现" class="headerlink" title="vue3.0实现"></a>vue3.0实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> 姓名：&lt;span id=<span class="string">&quot;spanName&quot;</span>&gt;&lt;/span&gt;</span><br><span class="line"> 	&lt;br&gt;</span><br><span class="line">	&lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;inpName&quot;</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">        <span class="comment">//利用proxy实现数据的双向绑定</span></span><br><span class="line">        <span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">        obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj,&#123;</span><br><span class="line">            get(target,prop)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">                <span class="keyword">return</span> target[prop];</span><br><span class="line">            &#125;,</span><br><span class="line">            set(target,prop,value)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">                target[prop] = value;</span><br><span class="line">                observer();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">observer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            spanName.innerHTML = obj.name;</span><br><span class="line">            inpName.value = obj.name;</span><br><span class="line">        &#125;;</span><br><span class="line">        observer();</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            obj.name = <span class="string">&#x27;Cabbage&#x27;</span>;</span><br><span class="line">        &#125;,<span class="number">1000</span>);</span><br><span class="line">        inpName.oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            obj.name = <span class="built_in">this</span>.value;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用proxy比2.0好多了，不用拷贝对象。使用proxy截获对象。在get方法中传递了两个参数，一个使对象本身，一个是对象属性，直接返回对象属性的值，在set方法中多了一个参数value，这个就是我们设置的值，直接设置对象属性值为这个值value，当set的时候，调用观察者<code>observer</code>这个方法，将<code>obj</code>的name赋值给<code>spanName</code>和<code>inpName</code>；但是此时只是数据的单项绑定，当我们在输入框中输入数据的时候，将<code>obj</code>的name属性的值改变w为我们输入的这个值，这个时候就实现了数据的双向绑定。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/17/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-10-17T03:04:39.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/17/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/16/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="archive-article-date">
-  	<time datetime="2020-10-16T12:28:34.297Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/16/#%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2020-10-16T12:25:53.706Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/16/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-15T12:02:48.592Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -284,8 +328,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
