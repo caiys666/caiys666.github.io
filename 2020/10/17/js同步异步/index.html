@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js的同步异步什么是同步：同步就是在函数返回的时候，调用者就能够得到预期结果，那么这个函数就是同步的，如果函数是同步的，即时调用函数执行的任务比较耗时，也会一直等待直到得到预期的结果。 什么是异步：如果在函数返回的时候，调用者还不能够得到预期的结果，二十需要在将来通过一定的手段得到，那么这个函数就是异步的。当函数是异步的时候，发出调用之后，马上返回，但是不会马返回预期结果。调用者不必主动等待，当调">
+  <meta name="description" content="js的同步异步什么是同步：会阻塞代码的执行同步就是在函数返回的时候，调用者就能够得到预期结果，那么这个函数就是同步的，如果函数是同步的，即时调用函数执行的任务比较耗时，也会一直等待直到得到预期的结果。 什么是异步：不会阻塞代码的执行如果在函数返回的时候，调用者还不能够得到预期的结果，二十需要在将来通过一定的手段得到，那么这个函数就是异步的。当函数是异步的时候，发出调用之后，马上返回，但是不会马返回">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2020/10/17/js%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="js的同步异步什么是同步：同步就是在函数返回的时候，调用者就能够得到预期结果，那么这个函数就是同步的，如果函数是同步的，即时调用函数执行的任务比较耗时，也会一直等待直到得到预期的结果。 什么是异步：如果在函数返回的时候，调用者还不能够得到预期的结果，二十需要在将来通过一定的手段得到，那么这个函数就是异步的。当函数是异步的时候，发出调用之后，马上返回，但是不会马返回预期结果。调用者不必主动等待，当调">
+<meta property="og:description" content="js的同步异步什么是同步：会阻塞代码的执行同步就是在函数返回的时候，调用者就能够得到预期结果，那么这个函数就是同步的，如果函数是同步的，即时调用函数执行的任务比较耗时，也会一直等待直到得到预期的结果。 什么是异步：不会阻塞代码的执行如果在函数返回的时候，调用者还不能够得到预期的结果，二十需要在将来通过一定的手段得到，那么这个函数就是异步的。当函数是异步的时候，发出调用之后，马上返回，但是不会马返回">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-17T13:45:04.658Z">
-<meta property="article:modified_time" content="2020-10-17T14:01:19.982Z">
+<meta property="article:modified_time" content="2020-10-18T11:14:44.272Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -165,9 +165,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="js的同步异步"><a href="#js的同步异步" class="headerlink" title="js的同步异步"></a>js的同步异步</h2><h3 id="什么是同步："><a href="#什么是同步：" class="headerlink" title="什么是同步："></a>什么是同步：</h3><p>同步就是在函数返回的时候，调用者就能够得到预期结果，那么这个函数就是同步的，如果函数是同步的，即时调用函数执行的任务比较耗时，也会一直等待直到得到预期的结果。</p>
-<h3 id="什么是异步："><a href="#什么是异步：" class="headerlink" title="什么是异步："></a>什么是异步：</h3><p>如果在函数返回的时候，调用者还不能够得到预期的结果，二十需要在将来通过一定的手段得到，那么这个函数就是异步的。当函数是异步的时候，发出调用之后，马上返回，但是不会马返回预期结果。调用者不必主动等待，当调用者得到结果之后会通过回调函数主动通知调用者。</p>
+        <h2 id="js的同步异步"><a href="#js的同步异步" class="headerlink" title="js的同步异步"></a>js的同步异步</h2><h3 id="什么是同步：会阻塞代码的执行"><a href="#什么是同步：会阻塞代码的执行" class="headerlink" title="什么是同步：会阻塞代码的执行"></a>什么是同步：会阻塞代码的执行</h3><p>同步就是在函数返回的时候，调用者就能够得到预期结果，那么这个函数就是同步的，如果函数是同步的，即时调用函数执行的任务比较耗时，也会一直等待直到得到预期的结果。</p>
+<h3 id="什么是异步：不会阻塞代码的执行"><a href="#什么是异步：不会阻塞代码的执行" class="headerlink" title="什么是异步：不会阻塞代码的执行"></a>什么是异步：不会阻塞代码的执行</h3><p>如果在函数返回的时候，调用者还不能够得到预期的结果，二十需要在将来通过一定的手段得到，那么这个函数就是异步的。当函数是异步的时候，发出调用之后，马上返回，但是不会马返回预期结果。调用者不必主动等待，当调用者得到结果之后会通过回调函数主动通知调用者。</p>
 <h3 id="消息队列和时间循环："><a href="#消息队列和时间循环：" class="headerlink" title="消息队列和时间循环："></a>消息队列和时间循环：</h3><p>现在我们有左边的一个栈，右边一个队列，左边存储的就是同步任务，右边存储的就是消息队列，一旦某个异步任务有了响应就会被推入消息队列中。js引擎线程用来执行栈中的同步任务，当所有的同步任务执行完毕之后，栈被清空，然后读取消息队列中的一个待处理任务，并把相关回调函数压入栈中，单线程开始执行新的同步任务。js引擎从消息队列中读取任务是不断循环的，每次栈被清空之后，都会在消息队列中读取新的任务，如果没有新的任务，就会等待，知道有新的任务进来，再次读取，这就是时间循环。</p>
+<p>前端使用异步的场景：1、网络请求  ajax图片加载</p>
+<p>​                                       2、定时器  setTimeout</p>
+<p>事件循环是异步回调的实现原理。先执行微任务，后执行宏任务。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
 
