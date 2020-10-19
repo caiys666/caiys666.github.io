@@ -169,15 +169,8 @@
 <p>2、XMLHttpRequest同源策略：禁止使用XHR对象向不同源的服务器地址发起HTTP请求，包括了AJAX。</p>
 <p>3、Cookie、LocalStorage、IndexedDB等存储内容同源策略：js中无法访问不属于同个源的Cookie、LocalStorage中存储的内容。</p>
 <p>有三个标签是允许跨域加载资源：</p>
-<ul>
-<li><p>‘<img src=xxx>‘</p>
-</li>
-<li><link href=xxx>
-</li>
-<li><script src=xxx>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=xxx&gt;</span><br><span class="line">&lt;link href=xxx&gt;</span><br><span class="line">&lt;script src=xxx&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
 <p>同源策略的目的就是为了浏览器的安全问题。</p>
 <ul>
 <li>如果没有DOM同源策略，也就是说不同域名的iframe之间可以相互访问，那么黑客可以进行攻击，获取到用户的密码。</li>
